@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>图像矩形边缘识别+顶角坐标获取(K210、V831、OpenMV)</title>
+      <link href="/2023/08/25/K210%E3%80%81V831%E3%80%81OpenMV%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"/>
+      <url>/2023/08/25/K210%E3%80%81V831%E3%80%81OpenMV%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<p>这篇文章主要介绍K210、V831、OpenMV的部分用法，以及心得体会</p><h2 id="K210"><a href="#K210" class="headerlink" title="K210"></a>K210</h2><ul><li><p>例程：</p><pre><code class="python">rectangles = []for r in img.find_rects(threshold=10000):             rectangles.append(r)    img.draw_rectangle(r.rect(), color=(255, 0, 0))    corners = r.corners()  # 获取矩形的四个顶角坐标    corners = sort_corners_clockwise(corners)    for i, p in enumerate(corners):        img.draw_circle(p[0], p[1], 5, color=(0, 255, 0))        print(&quot;矩形顶角&#123;&#125;坐标：&quot;.format(chr(ord(&#39;A&#39;)+i)), p[0], p[1])</code></pre><ol><li><p><code>rectangles = []</code>：这是一个空列表，用于存储找到的矩形对象。</p></li><li><p><code>for r in img.find_rects(threshold=10000):</code>：这是一个循环，通过<code>img.find_rects()</code>函数找到图像中的矩形。<code>threshold=10000</code>是一个阈值，用于确定矩形的识别阈值。</p></li><li><p><code>rectangles.append(r)</code>：将找到的矩形对象添加到<code>rectangles</code>列表中。</p></li><li><p><code>img.draw_rectangle(r.rect(), color=(255, 0, 0))</code>：在图像上绘制一个红色的矩形，位置和大小与找到的矩形对象<code>r</code>相同。</p></li><li><p><code>corners = r.corners()</code>：获取矩形对象<code>r</code>的四个顶角坐标。</p></li><li><p><code>sort_corners_clockwise()</code>，这个函数的作用是将顶角坐标按顺时针顺序排序。</p></li><li><p><code>for i, p in enumerate(corners):</code>：对每个顶角坐标进行循环。</p></li><li><p><code>img.draw_circle(p[0], p[1], 5, color=(0, 255, 0))</code>：在顶角坐标位置绘制一个绿色的圆圈。</p></li><li><p><code>print(&quot;矩形顶角&#123;&#125;坐标：&quot;.format(chr(ord(&#39;A&#39;)+i)), p[0], p[1])</code>：打印出每个顶角的坐标，使用字母标识不同的顶角。</p></li></ol></li></ul><h2 id="OpenMV"><a href="#OpenMV" class="headerlink" title="OpenMV"></a>OpenMV</h2><p>OpenMV使用的API与K210重合度很高，它们对矩形的识别都是用了 <code>for r in img.find_rects()</code></p><ul><li>例程<pre><code class="python">def sort_corners_clockwise(corners):    # 按照顺时针方向对四个顶角坐标进行排序    sorted_corners = sorted(corners, key=lambda corner: corner[0])    top_corners = sorted_corners[:2]    bottom_corners = sorted_corners[2:]    top_corners = sorted(top_corners, key=lambda corner: corner[1])    bottom_corners = sorted(bottom_corners, key=lambda corner: corner[1], reverse=True)    return top_corners + bottom_corners#寻找矩形def opv_find_rectangles(img):    rectangles = []    min_area_threshold = 1000    max_area_threshold = 15000    for r in img.find_rects(roi=(10, 0, 135, 120), threshold=20000):        area = r.w() * r.h()  # 计算矩形的面积        if area &gt;= min_area_threshold and area &lt;= max_area_threshold:            rectangles.append(r)            corners = r.corners()            corners = sort_corners_clockwise(corners)            for i, p in enumerate(corners):                img.draw_circle(p[0], p[1], 5, color=(0, 255, 0))                print(&quot;矩形&#123;&#125;的顶角&#123;&#125;坐标：&quot;.format(len(rectangles), chr(ord(&#39;A&#39;) + i)), p[0], p[1])return rectangles</code></pre><ol><li><p><code>sort_corners_clockwise()</code>: 这个函数用于对传入的顶点列表按照顺时针方向进行排序。首先，它按照 x 坐标进行排序，然后将排序后的顶点分成顶部和底部两部分。每部分分别按照 y 坐标排序。最终，按照排序后的顺序返回顶点列表。</p></li><li><p><code>opv_find_rectangles()</code>: 这个函数是用于在图像中寻找矩形。它使用了一个阈值来寻找图像中的矩形轮廓，并计算每个矩形的面积。如果面积在给定的阈值范围内，就将矩形添加到 rectangles 列表中。然后，它获取每个矩形的顶点坐标，并调用 <code>sort_corners_clockwise</code> 函数对顶点进行排序。最后，它在图像上绘制了每个顶点的圆圈，并打印出每个矩形的顶点坐标。</p></li></ol></li></ul><h2 id="V831"><a href="#V831" class="headerlink" title="V831"></a>V831</h2>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2023/07/24/hello-world/"/>
       <url>/2023/07/24/hello-world/</url>
