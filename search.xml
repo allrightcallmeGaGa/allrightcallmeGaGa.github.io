@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>FOC控制</title>
+      <link href="/2023/09/10/FOC%E6%8E%A7%E5%88%B6/"/>
+      <url>/2023/09/10/FOC%E6%8E%A7%E5%88%B6/</url>
+      
+        <content type="html"><![CDATA[<h2 id="FOC控制流程"><a href="#FOC控制流程" class="headerlink" title="FOC控制流程"></a>FOC控制流程</h2><ul><li><p>相电流采集：<br>  获取电机三相电流（正弦）Ia，Ib，Ic</p></li><li><p>Clark变换：<br>  将电机线圈的三相静止坐标转换成两相静止坐标（正弦）Ia，Ib，Ic转换成Iα，Iβ</p></li><li><p>Park变换：<br>  将clark变换得到的两相静止坐标系通过旋转得到两相电流的常量（线性）Iα，Iβ转换成Iq，Id</p></li><li><p>速度&#x2F;电流双闭环PID：<br>  计算Iq，Id与设定值的误差，将误差输入PID控制器；<br>  电流环控制电机电流（转矩），以电压形式输出；<br>  速度环通过控制转矩来控制电机转速；<br>  通过控制转速来控制位置。Iq，Id转换成Vq，Vd</p></li><li><p>Park反变换&amp;Clark反变换：<br>  将闭环PID得到的Vq，Vd反变换为Vα，Vβ</p></li><li><p>SVPWM：<br>  基于Vα，Vβ合成的6个空间电压矢量来合成任意矢量</p></li><li><p>位置与速度获取：<br>  有传感器and无传感器，有传感器将获取到的位置信息传递给Park&amp;Clark反变换</p></li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>VScode中Platformio的library界面卡死在loading...的解决办法</title>
       <link href="/2023/09/06/Platforms-Registry-PIO-Core-Call-Error-HTTPClientError-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
       <url>/2023/09/06/Platforms-Registry-PIO-Core-Call-Error-HTTPClientError-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
