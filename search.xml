@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Platforms: Registry PIO Core Call Error: HTTPClientError:解决方法</title>
+      <link href="/2023/09/06/Platforms-Registry-PIO-Core-Call-Error-HTTPClientError-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+      <url>/2023/09/06/Platforms-Registry-PIO-Core-Call-Error-HTTPClientError-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="VScode中Platformio的library界面卡死在loading…的解决办法"><a href="#VScode中Platformio的library界面卡死在loading…的解决办法" class="headerlink" title="VScode中Platformio的library界面卡死在loading…的解决办法"></a>VScode中Platformio的library界面卡死在loading…的解决办法</h2><ul><li>检查防火墙是否阻止80&#x2F;443 端口的服务</li><li>在控制面板中依次点击 系统和安全&#x2F;Windows Defender 防火墙，然后在左侧菜单中点击“高级设置”进入高级安全 Windows Defender 防火墙，点击“入站规则”在右侧操作栏选择“新建规则…”</li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>图像矩形边缘识别+顶角坐标获取(K210、V831、OpenMV)</title>
       <link href="/2023/08/25/K210%E3%80%81V831%E3%80%81OpenMV%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"/>
       <url>/2023/08/25/K210%E3%80%81V831%E3%80%81OpenMV%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</url>
