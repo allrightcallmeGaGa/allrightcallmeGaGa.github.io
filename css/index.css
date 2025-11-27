@@ -1620,64 +1620,6 @@ blockquote > :last-child {
   -webkit-box-shadow: var(--icat-shadow-main);
   box-shadow: var(--icat-shadow-main);
 }
-.aplayer.aplayer-withlrc {
-  background: var(--icat-secondbg);
-  text-align: center;
-  border: var(--icat-border-always);
-  border-radius: 8px;
-  -webkit-box-shadow: initial;
-  box-shadow: initial;
-}
-.aplayer.aplayer-withlrc .aplayer-pic .aplayer-button path {
-  -webkit-transition: all 0.1s ease;
-  -moz-transition: all 0.1s ease;
-  -o-transition: all 0.1s ease;
-  -ms-transition: all 0.1s ease;
-  transition: all 0.1s ease;
-}
-.aplayer.aplayer-withlrc .aplayer-pic:hover .aplayer-button,
-.aplayer.aplayer-withlrc .aplayer-pic:hover .aplayer-button path {
-  fill: var(--icat-theme);
-  border-color: var(--icat-theme);
-}
-.aplayer.aplayer-withlrc .aplayer-lrc:after,
-.aplayer.aplayer-withlrc .aplayer-lrc:before {
-  display: none;
-}
-.aplayer.aplayer-withlrc .aplayer-lrc p.aplayer-lrc-current {
-  color: var(--icat-theme);
-}
-.aplayer.aplayer-withlrc .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar {
-  background: var(--icat-card-border);
-  height: 8px;
-  border-radius: 99px;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -o-transition: 0.3s;
-  -ms-transition: 0.3s;
-  transition: 0.3s;
-  overflow: hidden;
-}
-.aplayer.aplayer-withlrc .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded {
-  height: 100%;
-  background: var(--icat-theme-op);
-}
-.aplayer.aplayer-withlrc .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played {
-  height: 100%;
-  border-radius: 99px;
-}
-.aplayer.aplayer-withlrc .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb {
-  display: none;
-}
-.aplayer.aplayer-withlrc .aplayer-info .aplayer-controller .aplayer-time {
-  position: initial;
-}
-.aplayer.aplayer-withlrc .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon:hover path {
-  fill: var(--icat-theme);
-}
-.aplayer.aplayer-withlrc .aplayer-info .aplayer-music .aplayer-title {
-  font-weight: 700;
-}
 :root {
   --hl-color: #eff;
   --hl-bg: #212121;
@@ -3197,6 +3139,64 @@ blockquote > :last-child {
 }
 h1.page-title + .tag-cloud-list {
   text-align: left;
+}
+.aplayer.aplayer-withlrc {
+  background: var(--icat-secondbg);
+  text-align: center;
+  border: var(--icat-border-always);
+  border-radius: 8px;
+  -webkit-box-shadow: initial;
+  box-shadow: initial;
+}
+.aplayer.aplayer-withlrc .aplayer-pic .aplayer-button path {
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  -ms-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+.aplayer.aplayer-withlrc .aplayer-pic:hover .aplayer-button,
+.aplayer.aplayer-withlrc .aplayer-pic:hover .aplayer-button path {
+  fill: var(--icat-theme);
+  border-color: var(--icat-theme);
+}
+.aplayer.aplayer-withlrc .aplayer-lrc:after,
+.aplayer.aplayer-withlrc .aplayer-lrc:before {
+  display: none;
+}
+.aplayer.aplayer-withlrc .aplayer-lrc p.aplayer-lrc-current {
+  color: var(--icat-theme);
+}
+.aplayer.aplayer-withlrc .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar {
+  background: var(--icat-card-border);
+  height: 8px;
+  border-radius: 99px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+  overflow: hidden;
+}
+.aplayer.aplayer-withlrc .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded {
+  height: 100%;
+  background: var(--icat-theme-op);
+}
+.aplayer.aplayer-withlrc .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played {
+  height: 100%;
+  border-radius: 99px;
+}
+.aplayer.aplayer-withlrc .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb {
+  display: none;
+}
+.aplayer.aplayer-withlrc .aplayer-info .aplayer-controller .aplayer-time {
+  position: initial;
+}
+.aplayer.aplayer-withlrc .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon:hover path {
+  fill: var(--icat-theme);
+}
+.aplayer.aplayer-withlrc .aplayer-info .aplayer-music .aplayer-title {
+  font-weight: 700;
 }
 #aside-content {
   width: 26%;

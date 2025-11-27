@@ -40,7 +40,7 @@ let commentInterval = null
 
 const comment = {
   fetchData: async (option) => {
-    const res = await fetch('{GAGA}', {
+    const res = await fetch('{https://twikoo.tang-kaikang.top}', {
       method: "POST",
       body: JSON.stringify({
         "event": "GET_RECENT_COMMENTS",
