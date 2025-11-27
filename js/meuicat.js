@@ -39,11 +39,11 @@ let commentData
 
 const comment = {
   fetchData: async (option) => {
-    const res = await fetch('{envId}', {
+    const res = await fetch('{GAGA}', {
       method: "POST",
       body: JSON.stringify({
         "event": "GET_RECENT_COMMENTS",
-        "accessToken": "{YOUR_TOKEN}",
+        "accessToken": "{e9242d91fd9a80d37964f5200da0f779}",
         "includeReply": true,
         "pageSize": -1,
         ...option
