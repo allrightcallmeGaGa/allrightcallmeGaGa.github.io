@@ -36,6 +36,7 @@ const changeTime = (time, more = false) => {
 }
 
 let commentData
+let commentInterval = null
 
 const comment = {
   fetchData: async (option) => {
@@ -86,9 +87,67 @@ const comment = {
     if (type === 'visitor') comment.new('mailMd5', commentCard.querySelector('.comment-user').getAttribute('data-mailmd5'))
     if (type === 'post') comment.new('url', commentCard.querySelector('.comment-link').getAttribute('onclick').split("'")[1])
     if (type === 'all') comment.new()
+  },
+  barrage: async () => {
+    const tlol = btf.saveToLocal.get('comment-pop')
+    const barrage = document.getElementById('comment-barrage')
+    if (tlol === 'off' || !barrage) return
+
+    const ScrollBarrage = () => {
+      const scrollResidue = (window.scrollY + document.documentElement.clientHeight) >= (document.getElementById("post-comment") || document.getElementById("footer")).offsetTop
+      barrage.classList.toggle('show', !scrollResidue)
+    }
+    const BarrageBox = (data) => {
+      const time = changeTime(new Date(data.created).toISOString(), true)
+
+      let barrages = document.createElement('div')
+      barrages.className = 'comment-barrage-item'
+      barrages.innerHTML = `<div class="barrageHead"><img class="barrageAvatar" src="${data.avatar}" /><div class="barrageNick">${data.nick}</div><div class="barrageTime">${time}曾评论</div><a class="barrageClose" href="javascript:comment.closeBarrage(true)"><i class="MeuiCat icon-close-fill"></i></a></div><a class="barrageContent" href="javascript:void(0)" onclick="btf.scrollToDest(btf.getEleTop(document.getElementById('${data.id}')), 300)"><p>${data.commentText.trim()}</p></a>`
+
+      box.push(barrages)
+      barrage.append(barrages)
+    }
+    const removeBarrage = (e) => {
+      if (!e) return
+      e.className = 'comment-barrage-item out'
+      setTimeout(() => barrage.removeChild(e), 1000)
+    }
+
+    btf.addEventListenerPjax(window, 'scroll', ScrollBarrage, { passive: true })
+
+    let hoverBarrage = false, index = 0, box = []
+    const url = `"url": window.location.pathname`
+    const data = await comment.fetchData(url)
+    if (!data.length) return
+
+    barrage.addEventListener('mouseenter', () => hoverBarrage = true)
+    barrage.addEventListener('mouseleave', () => hoverBarrage = false)
+
+    clearInterval(commentInterval)
+    commentInterval = setInterval(() => {
+      if (box.length >= 1 && !hoverBarrage) removeBarrage(box.shift())
+      if (!hoverBarrage) {
+        BarrageBox(data[index])
+        index = (index + 1) % data.length
+      }
+    }, 5000)
+  },
+  closeBarrage: (state = false) => {
+    const removeBarrage = () => {
+      const $comment = document.querySelector('#comment-barrage')
+      $comment.className = 'out'
+      setTimeout(() => { $comment.innerHTML = '', $comment.className = 'show' }, 1000)
+    }
+
+    if (state) return clearInterval(commentInterval), removeBarrage()
+
+    const comments = btf.saveToLocal.get('comment-pop')
+    btf.saveToLocal.set('comment-pop', comments === 'off' ? 'on' : 'off', 2)
+    comments === 'off' ? comment.barrage() : (clearInterval(commentInterval), removeBarrage())
   }
 }
 btf.addGlobalFn('pjaxComplete', comment.new(), 'comment')
+btf.addGlobalFn('pjaxComplete', comment.barrage(), 'barrage')
 
 let ArticleData
 
