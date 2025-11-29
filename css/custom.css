@@ -165,9 +165,3 @@ h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
 #content-inner.layout h5::before { color: #57c850; margin-left: -0.9rem; font-size: 0.7rem; margin-top: 0; }
 #content-inner.layout h6::before { color: #5ec1e0; margin-left: -0.9rem; font-size: 0.66rem; margin-top: 0; }
 
-/* 隐藏深浅色模式切换提示 */
-#theme-mode-tip,
-.theme-mode-tip,
-.theme-switch-tip {
-  display: none !important;
-}
