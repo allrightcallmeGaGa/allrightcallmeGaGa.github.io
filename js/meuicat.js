@@ -103,7 +103,6 @@ const comment = {
       let barrages = document.createElement('div')
       barrages.className = 'comment-barrage-item'
       barrages.innerHTML = `<div class="barrageHead"><img class="barrageAvatar" src="${data.avatar}" /><div class="barrageNick">${data.nick}</div><div class="barrageTime">${time}曾评论</div><a class="barrageClose" href="javascript:comment.closeBarrage(true)"><i class="MeuiCat icon-close-fill"></i></a></div><a class="barrageContent" href="javascript:void(0)" onclick="btf.scrollToDest(btf.getEleTop(document.getElementById('${data.id}')), 300)"><p>${data.commentText.trim()}</p></a>`
-
       box.push(barrages)
       barrage.append(barrages)
     }
